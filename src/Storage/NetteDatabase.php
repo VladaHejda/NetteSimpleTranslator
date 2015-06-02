@@ -11,23 +11,18 @@ class NetteDatabase implements \NetteSimpleTranslator\ITranslatorStorage
 	private $database;
 
 	/** @var string */
-	private $defaultTable;
-
-	/** @var string */
 	private $translationTable;
 
 
 
 	/**
-	 * @param string $defaultTableName name of table with original texts
-	 * @param string $translationTableName name of table with translated texts
+	 * @param string $translationTable name of table with translated texts
 	 * @param Context $database
 	 */
-	public function __construct($defaultTableName, $translationTableName, Context $database)
+	public function __construct($translationTable, Context $database)
 	{
 		$this->database = $database;
-		$this->defaultTable = $defaultTableName;
-		$this->translationTable = $translationTableName;
+		$this->translationTable = $translationTable;
 	}
 
 
@@ -35,16 +30,16 @@ class NetteDatabase implements \NetteSimpleTranslator\ITranslatorStorage
 	public function getTranslation($original, $language, $variant = 0, $namespace = null)
 	{
 		$selection = $this->database->table($this->translationTable)
-			->where('language', $language)
+			->where('lang', $language)
 			->where('variant <=', $variant)
-			->where($this->defaultTable . '.text', $original)
+			->where('text.text', $original)
 			->order('variant DESC');
 
 		if ($namespace) {
-			$selection->where($this->defaultTable . '.ns', $namespace);
+			$selection->where('text.ns', $namespace);
 		}
 
-		return $selection->fetch()->translation;
+		return ($row = $selection->fetch()) ? $row->translation : null;
 	}
 
 }
