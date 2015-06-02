@@ -1,0 +1,3 @@
+services:
+	translatorStorage: DummyStorage
+	translator: NetteSimpleTranslator\Translator(en)

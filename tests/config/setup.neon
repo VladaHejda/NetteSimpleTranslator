@@ -1,0 +1,7 @@
+services:
+	translatorStorage: DummyStorage
+	translator:
+		class: NetteSimpleTranslator\Translator(en)
+		setup:
+			- setAvailableLanguages([en, cz, de])
+			- setNamespace(front)

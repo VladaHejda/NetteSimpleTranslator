@@ -1,0 +1,26 @@
+{
+	"name": "vladahejda/nettesimpletranslator",
+	"description": "Translator for Nette (PHP framework).",
+	"keywords": ["nette", "translator"],
+	"license": ["BSD-3-Clause"],
+	"authors": [
+        {
+            "name": "Vladislav Hejda",
+            "homepage": "http://hejdav.cz"
+        }
+	],
+	"autoload": {
+		"classmap": ["src"]
+	},
+	"require": {
+		"nette/utils": "~2.3",
+		"nette/database": "~2.3"
+	},
+    "require-dev": {
+	    "nette/application": "~2.3",
+	    "nette/bootstrap": "~2.3",
+	    "nette/robot-loader": "~2.3",
+	    "tracy/tracy": "~2.3",
+        "nette/tester": "~1.4"
+    }
+}
