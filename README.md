@@ -145,7 +145,7 @@ Better way of this is setting it in config:
 Translator will now recognize the current language itself.
 
 
-### Use skills of `sprintf`
+### Use advantages of `sprintf`
 
 If you give more arguments to translate method, it will be handed to php function
 [sprintf](http://php.net/manual/en/function.sprintf.php).
